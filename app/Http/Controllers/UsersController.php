@@ -2,38 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Student;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller {
-
-    public function getAllStudents() {
-        $student_model = new Student();
-        $st_data = $student_model->getStudent();
-        return response()->json($st_data);
+    public function getStudent() {
+        $result = DB::table('students')->select('name', 'email', 'contact', 'id')->get();
+        return $result;
     }
 
-    public function saveStudents(Request $request) {
-        $student_model = new Student();
-        $result = $student_model->addStudent($request->all());
+    public function addStudent($save_data) {
+        $result = DB::table('students')->insert($save_data);
+        return $result;
     }
 
-    public function deleteStudents(Request $request) {
-        $student_model = new Student();
-        $id = $request->id;
-        return $student_model->deleteStudent($id);
+    public function deleteStudent($id) {
+        $result = DB::table('students')->where('id', $id)->delete();
     }
 
-    public function getOneStudentData(Request $request) {
-        $student_model = new Student();
-        $id = $request->id;
-        $data = $student_model->getOneStudentDetail($id);
-        return response()->json($data);
+    public function getOneStudentDetail($id) {
+        $result = DB::table('students')->where('id', $id)->first();
+        return $result;
     }
 
-    public function updateStudentData(Request $request) {
-        $student_model = new Student();
-        $id = $request->id;
-        return $student_model->updateStudentDetail($id,$request->all());
+    public function updateStudentDetail($id, $data) {
+        $result = DB::table('students')->where('id', $id)->update($data);
+        return $result;
     }
 }

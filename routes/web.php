@@ -2,11 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 
-//-------old way of adding view
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
 
 //-------new way of add view//
 Route::view('/','welcome');
@@ -15,7 +21,7 @@ Route::view('/','welcome');
 //Route::get('/updateTask/{id}','taskController@updateTask');
 
 //-----------new way of define controller//
-Route::get('students',[\App\Http\Controllers\UsersController::class, 'getAllStudents']);
+Route::get('students',[\App\Http\Controllers\UsersController::class, 'getStudent']);
 
 Route::post('saveStudent',[\App\Http\Controllers\UsersController::class, 'saveStudents']);
 
