@@ -23,7 +23,7 @@ Route::view('/','welcome');
 //-----------new way of define controller//
 Route::get('students',[\App\Http\Controllers\UsersController::class, 'getStudent']);
 
-Route::post('saveStudent',[\App\Http\Controllers\UsersController::class, 'saveStudents']);
+Route::post('saveStudent',[\App\Http\Controllers\UsersController::class, 'addStudent']);
 
 Route::delete('deleteStudent/{id}',[\App\Http\Controllers\UsersController::class, 'deleteStudents']);
 
