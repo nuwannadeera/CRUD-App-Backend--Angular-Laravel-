@@ -25,8 +25,8 @@ Route::get('students',[\App\Http\Controllers\UsersController::class, 'getStudent
 
 Route::post('saveStudent',[\App\Http\Controllers\UsersController::class, 'addStudent']);
 
-Route::delete('deleteStudent/{id}',[\App\Http\Controllers\UsersController::class, 'deleteStudents']);
+Route::delete('deleteStudent/{id}',[\App\Http\Controllers\UsersController::class, 'deleteStudent']);
 
-Route::get('getOneStudentData/{id}',[\App\Http\Controllers\UsersController::class, 'getOneStudentData']);
+Route::get('getOneStudentData/{id}',[\App\Http\Controllers\UsersController::class, 'getOneStudentDetail']);
 
-Route::patch('updateStudentData/{id}',[\App\Http\Controllers\UsersController::class, 'updateStudentData']);
+Route::patch('updateStudentData/{id}',[\App\Http\Controllers\UsersController::class, 'updateStudentDetail']);
