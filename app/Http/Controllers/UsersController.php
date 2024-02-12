@@ -31,6 +31,7 @@ class UsersController extends Controller {
 
     public function deleteStudent($id) {
         $result = DB::table('students')->where('id', $id)->delete();
+        return $result;
     }
 
     public function getOneStudentDetail($id) {
@@ -38,7 +39,12 @@ class UsersController extends Controller {
         return $result;
     }
 
-    public function updateStudentDetail($id, $data) {
+    public function updateStudentDetail($id, Request $request) {
+        $data = [
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'contact' => $request->input('contact'),
+        ];
         $result = DB::table('students')->where('id', $id)->update($data);
         return $result;
     }
